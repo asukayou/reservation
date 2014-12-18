@@ -1,0 +1,8 @@
+/nbproject/private/
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/app/spool/*
+/vendor/
+/app/config/parameters.yml
