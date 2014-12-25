@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.ay-hide {
+    display: none;
+}
+
+.ay-deleted {
+    text-decoration: line-through;
+}
+
+.ay-content {
+    padding: 0px 30px 10px;
+}

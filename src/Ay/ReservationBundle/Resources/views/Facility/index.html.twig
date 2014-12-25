@@ -1,0 +1,40 @@
+{% set title_name = 'Manage Facility' %}
+
+{% extends 'AyReservationBundle::layout.html.twig' %}
+
+{% block content %}
+    <div>
+        <table id="ay-pager-table" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="ay-hide">id</th>
+                    <th>{{ 'No.' | trans }}</th>
+                    <th>{{ 'Name' | trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for facility in facilities %}
+                    <tr{% if facility.deleted %} class="ay-deleted"{% endif %}>
+                        <td class="ay-hide">{{ facility.id }}</td>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ facility.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function(){
+    
+    $('#ay-pager-table').DataTable({
+        "language": {
+            "url": "{{ asset('js/dataTables.japanese.json') }}"
+        }
+    });
+
+});
+</script>
+{% endblock %}
