@@ -3,6 +3,9 @@
 {% extends 'AyReservationBundle::layout.html.twig' %}
 
 {% block content %}
+    <div class="ay-item">
+        <button type="button" id="btn_new" class="btn">{{ 'New' | trans }}</button>
+    </div>
     <div>
         <table id="ay-pager-table" class="table table-bordered table-hover">
             <thead>
@@ -33,6 +36,10 @@ $(function(){
         "language": {
             "url": "{{ asset('js/dataTables.japanese.json') }}"
         }
+    });
+
+    $("#btn_new").click( function(){
+      location.replace('{{ path('facility_create') }}');
     });
 
 });

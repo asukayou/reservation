@@ -1,0 +1,34 @@
+{% set title_name = 'Facility Registration' %}
+
+{% form_theme form ':Form:rows.html.twig' %}
+{% extends 'AyReservationBundle::layout.html.twig' %}
+
+{% block content %}
+    <form id="frm_post" action="{{ path('facility_create') }}" method="post">
+        {{ form_errors(form) }}
+        {{ form_row(form.name) }}
+        {{ form_widget(form._token) }}
+        <div class="ay-buttons">
+            <button type="submit" id="btn_create" class="btn btn-primary">{{ 'Regist' | trans }}</button>
+            <button type="button" id="btn_cancel" class="btn">{{ 'Cancel' | trans }}</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function(){
+    
+    $('#frm_post').submit( function(){
+        if (!confirm('{{ 'It registers.\\nIs it all right?' | trans }}')) {
+            return false;
+        }
+    });
+
+    $('#btn_cancel').click( function(){
+        location.replace('{{ path('facility_index') }}');
+    });
+
+});
+</script>
+{% endblock %}

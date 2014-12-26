@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+    font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+}
+
 .ay-hide {
     display: none;
 }
@@ -10,4 +14,42 @@
 
 .ay-content {
     padding: 0px 30px 10px;
+}
+
+.ay-item {
+    margin: 10px 0;
+}
+
+div.ay-buttons {
+    margin-top: 10px;
+    margin-left: 130px;
+}
+
+.form-group label {
+    margin-right: 10px;
+    text-align: right;
+    width: 120px;
+}
+
+form > ul {
+    list-style-type: none;
+    padding: 0px;
+    color: red;    
+}
+
+.form-group ul {
+    margin-left: 130px;
+    list-style-type: none;
+    padding: 0px;
+    color: red;
+}
+
+input.form-control {
+    font-family: 'ＭＳ ゴシック', monospace;
+    font-size: 14px;
+}
+
+.form-control.ay-input-name {
+    width: 250px;
+   ime-mode: active;
 }

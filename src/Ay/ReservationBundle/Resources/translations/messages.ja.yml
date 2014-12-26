@@ -1,5 +1,21 @@
+# システム
 Reservation System: 予約システム
+
+# メニュー
 General: 一般
 Administration: 管理
 Manage Facility: 設備管理
+
+# タイトル
+Facility Registration: 設備登録
+
+# カラム
 Name: 名前
+
+# ボタン
+New: 新規
+Regist: 登録
+Cancel: キャンセル
+
+# 確認メッセージ
+'It registers.\nIs it all right?': '登録します。\nよろしいですか？'
