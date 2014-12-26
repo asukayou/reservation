@@ -5,4 +5,5 @@
 /app/logs/*
 /app/spool/*
 /vendor/
+composer.lock
 /app/config/parameters.yml
