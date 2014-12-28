@@ -1,0 +1,35 @@
+{% set title_name = 'Facility Detail' %}
+
+{% form_theme form ':Form:rows.html.twig' %}
+{% extends 'AyReservationBundle::layout.html.twig' %}
+
+{% block content %}
+    <form id="frm_post" action="{{ path('facility_update', {'id': id}) }}" method="post">
+        {{ form_errors(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.deleted) }}
+        {{ form_widget(form._token) }}
+        <div class="ay-buttons">
+            <button type="submit" id="btn_update" class="btn btn-primary">{{ 'Update' | trans }}</button>
+            <button type="button" id="btn_cancel" class="btn">{{ 'Cancel' | trans }}</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function(){
+
+    $('#frm_post').submit( function(){
+        if (!confirm('{{ 'It updates.\\nIs it all right?' | trans }}')) {
+            return false;
+        }
+    });
+
+    $('#btn_cancel').click( function(){
+      location.replace('{{ path('facility_index') }}');
+    });
+
+});
+</script>
+{% endblock %}

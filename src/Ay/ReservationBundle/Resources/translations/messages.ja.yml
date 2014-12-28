@@ -8,14 +8,18 @@ Manage Facility: 設備管理
 
 # タイトル
 Facility Registration: 設備登録
+Facility Detail: 設備詳細
 
-# カラム
+# ラベル
 Name: 名前
+Deleted: 削除
 
 # ボタン
 New: 新規
 Regist: 登録
+Update: 更新
 Cancel: キャンセル
 
 # 確認メッセージ
 'It registers.\nIs it all right?': '登録します。\nよろしいですか？'
+'It updates.\nIs it all right?': '更新します。\nよろしいですか？'

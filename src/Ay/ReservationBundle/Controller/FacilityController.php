@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 use Ay\ReservationBundle\Entity\Facility;
 use Ay\ReservationBundle\Form\Type\FacilityType;
@@ -52,11 +51,34 @@ class FacilityController extends Controller {
     }
 
     /**
-     * @Route("/update/{id}", requirements={"id" = "\d+"}, name="facility_update")
+     * @Route("/update/{id}", requirements={"id" = "\d+"}, name="facility_update", options={"expose"=true})
+     * @Method({"GET", "POST"})
      */
     public function updateAction(Request $request, $id) {
         // 更新処理
-        return new Response('更新処理');
+        $facility = $this->getDoctrine()
+                ->getRepository('AyReservationBundle:Facility')
+                ->find($id);
+        if (!$facility) {
+            throw $this->createNotFoundException('Facility not found');
+        }
+        $form = $this->createForm(new FacilityType(), $facility);
+        if ($request->getMethod() == 'GET') {
+            return $this->render('AyReservationBundle:Facility:update.html.twig', array(
+                        'form' => $form->createView(),
+                        'id' => $id
+            ));
+        }
+        $form->handleRequest($request);
+        if (!$form->isValid()) {
+            return $this->render('AyReservationBundle:Facility:update.html.twig', array(
+                        'form' => $form->createView(),
+                        'id' => $id
+            ));
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        return $this->redirect($this->generateUrl('facility_index'));
     }
 
 }

@@ -18,6 +18,7 @@
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "friendsofsymfony/jsrouting-bundle": "@stable",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {

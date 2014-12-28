@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="ay-item">
-        <button type="button" id="btn_new" class="btn">{{ 'New' | trans }}</button>
+        <button type="button" id="ay-btn-new" class="btn">{{ 'New' | trans }}</button>
     </div>
     <div>
         <table id="ay-pager-table" class="table table-bordered table-hover">
@@ -17,8 +17,8 @@
             </thead>
             <tbody>
                 {% for facility in facilities %}
-                    <tr{% if facility.deleted %} class="ay-deleted"{% endif %}>
-                        <td class="ay-hide">{{ facility.id }}</td>
+                    <tr class="ay-sel-row{% if facility.deleted %} ay-deleted{% endif %}">
+                        <td class="ay-sel-id ay-hide">{{ facility.id }}</td>
                         <td>{{ loop.index }}</td>
                         <td>{{ facility.name }}</td>
                     </tr>
@@ -38,8 +38,12 @@ $(function(){
         }
     });
 
-    $("#btn_new").click( function(){
-      location.replace('{{ path('facility_create') }}');
+    $("#ay-btn-new").click( function(){
+        location.replace('{{ path('facility_create') }}');
+    });
+
+    $(".ay-sel-row").click( function(){
+        location.replace(Routing.generate('facility_update', { id: $(this).children(".ay-sel-id").text() }));
     });
 
 });
